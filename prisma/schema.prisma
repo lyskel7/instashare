@@ -13,13 +13,14 @@ model User {
   email         String?         @unique
   emailVerified DateTime?
   image         String?
+  role          ERole           @default(USER)
+  mobile        String?
+  password      String
   accounts      Account[]
   sessions      Session[]
-  // Optional for WebAuthn support
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
   Authenticator Authenticator[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model Account {
@@ -78,4 +79,9 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, credentialID])
+}
+
+enum ERole {
+  ADMIN
+  USER
 }
