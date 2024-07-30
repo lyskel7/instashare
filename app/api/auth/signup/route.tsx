@@ -1,7 +1,7 @@
 import { TUser } from "@/app/lib/types";
 import prismaClient from "@/auth";
+import { hash } from 'bcrypt';
 import { NextResponse } from "next/server";
-import { compare, hash } from 'bcrypt'
 
 export async function POST(req: Request) {
   try {
