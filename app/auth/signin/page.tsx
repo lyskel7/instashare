@@ -38,13 +38,12 @@ const SignInPage = () => {
     const res = await signIn('credentials', {
       email: email,
       password: password,
-      redirect: false
-    })
-
+      redirect: false,
+    },)
     if (res?.error) {
       setError('Invalid credentials')
     } else {
-      router.push('/dashboard');
+      router.push('/dashboard/user')
     }
   }
 

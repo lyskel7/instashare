@@ -35,7 +35,7 @@ const SignUpPage = () => {
     try {
       const { confirm, ...user } = data;
       await SignupController.getSignupControllerInstance(EAuthType.NONE).signup(user);
-      router.push('/auth/login');
+      router.push('/auth/signin');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response) {
